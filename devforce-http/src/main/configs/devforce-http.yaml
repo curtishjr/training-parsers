@@ -1,0 +1,62 @@
+devforce-http:
+  description: "This feed transforms HTTP access log data to events."
+  output: streaming
+  parser:
+    description: "A W3CLogParser configured for HTTP access log data."
+    class: c3.ingest.parsers.csv.IndexableCSVParser
+    vis: "U"
+    config:
+      delimiter-char: " " # optional
+      quote-char: "\"" # optional
+      escape-char: '\\'
+      skip-headers: false
+      mappings:
+        0: "//ip//src"
+        3: "//time//receipt"
+        5: "//url//request"
+        6: "//httpresponsestatuscode"
+        7: "//bytes//output"
+        8: "//url//referrer"
+        9: "//httpuseragent"
+      ingest-info:
+        file-name: "parsers.file.name"
+        file-size: "parsers.file.size"
+        record-number: "parsers.record.number"
+  transforms:
+    - description: "Set the kronos event type"
+      class: c3.ingest.transforms.event.type.SetType
+      config:
+        value: "DEVFORCE-HTTP"
+    - description: "Assign an idempotent ID to the event."
+      class: c3.ingest.extra.transforms.event.id.ShortHashIdFromFields
+      config:
+        fields: ["parsers.file.name", "parsers.file.size", "parsers.record.number"]
+    - description: "Extract HTTP method, URL request and protocol scheme from //url//request field"
+      class: c3.ingest.extra.transforms.event.field.RegexExtractFields
+      config:
+        "//url//request":
+          '^(.+) (.+) (.+)$':
+            "1": "//httpmethodname"
+            "2": "//url//resource"
+            "3": "//protocol//transport"
+    - description: "Clear out the file info values and record number."
+      class: c3.ingest.transforms.event.field.RemoveAll
+      config:
+        fields: ["parsers.file.size", "parsers.record.number", "parsers.file.name"]
+    - description: "Remove leading square brace from a time of request."
+      class: c3.ingest.extra.transforms.event.field.ReplaceSubstring
+      config:
+        "//time//receipt":
+          "\\[": ""
+    - description: "add Kronos timestamp from datetime field"
+      class: c3.ingest.transforms.event.time.FormattedTime
+      config:
+        "//time//receipt": "dd/MMM/yyyy:HH:mm:ss"
+    - description: "Convert IP SRC and time of request field types"
+      class: c3.ingest.transforms.event.field.ConvertValue
+      config:
+        "//time//receipt":
+          - instant: "dd/MMM/yyyy:HH:mm:ss"
+        "//ip//src":
+          - "ipv4"
+          - "ipv6"

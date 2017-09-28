@@ -1,0 +1,26 @@
+[
+  {
+    "name": "//username",
+    "description": "The username for the VM login event"
+  },
+  {
+    "name": "//datetime",
+    "description": "The time for the VM login event"
+  },
+  {
+    "name": "//severity//event",
+    "description": "Severity"
+  },
+  {
+    "name": "//module//event",
+    "description": "module"
+  },
+  {
+    "name": "//message//event",
+    "description": "message"
+  },
+  {
+    "name": "//virtualsystem",
+    "description": "virtual host"
+  }
+]

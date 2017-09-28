@@ -1,0 +1,18 @@
+[
+  {
+    "name": "//time//receipt",
+    "description": "date and time the receiver first started seeing the aircraft on this flight.  Accurate for a single receiver, but as the plane is detected by different receivers, this will change."
+  },
+  {
+    "name": "//adsb//callsign",
+    "description": "The callsign of the aircraft.  Typically, this can be set by the pilot by entering it into the transponder prior to flight.  Some aircraft simply leave it as their registration number.  Occasionally, you might see \"interesting\" things (like jokes) entered in this field by the flight crew."
+  },
+  {
+    "name": "//adsb//icao",
+    "description": "One of the most important fields. This is the six-digit hexadecimal identifier broadcast by the aircraft over the air in order to identify itself.  Blocks of these codes are assigned to countries by the International Civil Aviation Organization (ICAO).  Each country then assigns individual codes to aircraft registered in that country. There should generally be a one to one correlation between an aircraft registration number and ICAO hex code.  The ICAO hex identifier can be used to lookup information such as aircraft registration, type, owner/operator, etc in various databases around the internet such as www.airframes.org.  It should be noted that generally the ICAO hex code remains the same as long as the aircraft’s “Registration number” remains the same.  If the registration number changes, which can happen sometimes when an aircraft is sold to an owner in another country, the ICAO hex code will also change."
+  },
+  {
+    "name": "//adsb//cos",
+    "description": "Tuples containing lat, lng, altitude and timestamp."
+  }
+]

@@ -1,0 +1,27 @@
+### Global transforms for providing geo-location enrichment based on ips.
+global:
+    transforms:
+      - class: c3.ingest.transforms.event.enrich.IPMaxMindGeoEnricher
+        config:
+            cache-size: 4000
+            cache-time-ms: 43200000
+            data-file: /opt/c3/lib/GeoLiteCity.dat
+
+      - class: c3.ingest.transforms.event.enrich.IPMaxMindASNEnricher
+        config:
+            cache-size: 4000
+            cache-time-ms: 43200000
+            data-file: /opt/c3/lib/GeoIPASNum.dat
+
+      - class: c3.ingest.extra.transforms.event.field.FieldMapping
+        config:
+          fields:
+            //transportprotocol:
+              "6": "tcp"
+              "TCP": "tcp"
+              "17": "udp"
+              "UDP": "udp"
+
+      - class: c3.ingest.extra.transforms.event.time.InsertCurrentTime
+        config:
+          label: "//datetime//ingest//bdp"

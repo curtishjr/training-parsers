@@ -1,0 +1,47 @@
+{
+  "name": "${project.name}",
+  "description": "${project.description}",
+  "appKey": "${rda.app.key}",
+  "version": "${project.version}",
+  "components": [
+    {
+      "type": "parser",
+      "name": "${project.name}",
+      "description": "${project.description}",
+      "config": {
+        "libs": [
+          {
+            "src": "libs/*"
+          }
+        ],
+        "feeds": {
+          "kronos": [
+            {
+              "src": "configs/*"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "catalog-labels",
+      "name": "Catalog Labels for ${project.name}",
+      "description": "Catalog Labels for ${project.name}",
+      "config": {
+        "labels": [
+          "catalog/catalog-labels.json"
+        ]
+      }
+    },
+    {
+      "type": "model-metadata",
+      "name": "${project.name} Model Metadata",
+      "description": "Model Metadata for ${project.name} Suite",
+      "config": {
+        "models": [
+          "catalog/catalog-modelmeta.json"
+        ]
+      }
+    }
+  ]
+}

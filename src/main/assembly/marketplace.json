@@ -1,0 +1,10 @@
+{
+  "name" : "${project.name}",
+  "brief" : "${project.description}",
+  "description" : "${project.description}",
+  "tags" : [ "uscc", "parsers" ],
+  "bdpVersion" : "${bdp.version}",
+  "developer" : "Enlighten IT Group (EITG) | MacAulay-Brown, Inc.",
+  "developerOrg" : "USCYBERCOM",
+  "license" : "GOSS, Government unlimited rights"
+}

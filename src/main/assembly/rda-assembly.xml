@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+    <id>rda</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <files>
+        <file>
+            <source>${project.basedir}/../src/main/assembly/rda.manifest</source>
+            <outputDirectory></outputDirectory>
+            <fileMode>664</fileMode>
+            <filtered>true</filtered>
+        </file>
+        <file>
+            <source>${project.basedir}/../src/main/assembly/marketplace.json</source>
+            <outputDirectory></outputDirectory>
+            <fileMode>664</fileMode>
+            <filtered>true</filtered>
+        </file>
+    </files>
+
+    <fileSets>
+        <fileSet>
+            <directory>${project.build.directory}/parser-configs/feeds/kronos</directory>
+            <outputDirectory>configs</outputDirectory>
+            <fileMode>664</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/main/resources/catalog</directory>
+            <outputDirectory>catalog</outputDirectory>
+            <fileMode>664</fileMode>
+        </fileSet>
+    </fileSets>
+
+    <dependencySets>
+        <dependencySet>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <outputDirectory>libs</outputDirectory>
+            <includes>
+                <include>*:jar:*</include>
+            </includes>
+            <fileMode>0664</fileMode>
+            <directoryMode>0775</directoryMode>
+        </dependencySet>
+    </dependencySets>
+
+</assembly>

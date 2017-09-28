@@ -1,0 +1,92 @@
+[
+  {
+    "store": "kronos",
+    "type": "VM-LOGIN-EVENTS",
+    "properties": [
+      {
+        "name": "c3.catalog.description",
+        "value": "ADS-B event logs"
+      }
+    ],
+    "fields": [
+      {
+        "name": "USERNAME",
+        "properties": [
+          {
+            "name": "c3.catalog.sourceName",
+            "value": "User"
+          },
+          {
+            "name": "c3.catalog.description",
+            "value": "User login name."
+          }
+        ]
+      },
+      {
+        "name": "DATETIME",
+        "properties": [
+          {
+            "name": "c3.catalog.sourceName",
+            "value": "Time"
+          },
+          {
+            "name": "c3.catalog.description",
+            "value": "User login time."
+          }
+        ]
+      },
+      {
+        "name": "SEVERITY_EVENT",
+        "properties": [
+          {
+            "name": "c3.catalog.sourceName",
+            "value": "Severity"
+          },
+          {
+            "name": "c3.catalog.description",
+            "value": "Event severity."
+          }
+        ]
+      },
+      {
+        "name": "MODULE_EVENT",
+        "properties": [
+          {
+            "name": "c3.catalog.sourceName",
+            "value": "Module"
+          },
+          {
+            "name": "c3.catalog.description",
+            "value": "Event module."
+          }
+        ]
+      },
+      {
+        "name": "MESSAGE_EVENT",
+        "properties": [
+          {
+            "name": "c3.catalog.sourceName",
+            "value": "Message"
+          },
+          {
+            "name": "c3.catalog.description",
+            "value": "Event message."
+          }
+        ]
+      },
+      {
+        "name": "VIRTUALSYSTEM",
+        "properties": [
+          {
+            "name": "c3.catalog.sourceName",
+            "value": "Objects"
+          },
+          {
+            "name": "c3.catalog.description",
+            "value": "Event objects."
+          }
+        ]
+      }
+    ]
+  }
+]

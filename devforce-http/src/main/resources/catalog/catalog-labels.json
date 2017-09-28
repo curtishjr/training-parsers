@@ -1,0 +1,41 @@
+[
+  {
+    "name": "//ip//src",
+    "description": "The IP address that initiated the request."
+  },
+  {
+    "name": "//time//receipt",
+    "description": "The time when an event occurs."
+  },
+  {
+    "name": "//url//request",
+    "description": "In the case of an HTTP request, this field contains the first line of the request. The request should contain the protocol and http verb."
+  },
+  {
+    "name": "//httpmethodname",
+    "description": "HTTP method of the request"
+  },
+  {
+    "name": "//url//resource",
+    "description": "In the case of an HTTP request, this field contains the resource that was requested by the client."
+  },
+  {
+    "name": "//protocol//transport",
+    "description": "Transport protocol."
+  },
+  {
+    "name": "//httpresponsestatuscode",
+    "description": "Status code"
+  },{
+    "name": "//bytes//output",
+    "description": "The size of the response in bytes"
+  },
+  {
+    "name":"//url//referrer",
+    "description": "The previous site visited by the user. This site provided a link to the current site."
+  },
+  {
+    "name":"//httpuseragent",
+    "description":"User agent"
+  }
+]

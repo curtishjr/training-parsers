@@ -1,0 +1,56 @@
+vm-login-events:
+  description: "This feed transforms Virtual machine login data to Kronos events."
+  output: streaming
+  parser:
+    description: "A CSV parser VM login data."
+    class: c3.ingest.parsers.csv.IndexableCSVParser
+    vis: "U"
+    config:
+      delimiter-char: "," # optional
+      quote-char: "\"" # optional
+      skip-headers: true
+      mappings:
+        0: "//username"
+        1: "//severity//event"
+        2: "//datetime"
+        3: "//module//event"
+        4: "//message//event"
+        5: "//virtualsystem"
+#      ingest-info:
+#        file-name: "parsers.file.name"
+#        file-size: "parsers.file.size"
+#        record-number: "parsers.record.number"
+  transforms:
+    - description: "Set the kronos event type"
+      class: c3.ingest.transforms.event.type.SetType
+      config:
+        value: "VM-LOGIN-EVENTS"
+    - description: "add Kronos timestamp from datetime field"
+      class: c3.ingest.transforms.event.time.FormattedTime
+      config:
+        "//datetime": "MM/dd/yyyy hh:mm aa"
+    - description: "Convert IP SRC and time of request field types"
+      class: c3.ingest.transforms.event.field.ConvertValue
+      config:
+        "//datetime":
+          - instant: "MM/dd/yyyy hh:mm aa"
+
+#       7/27/2017 10:41 AM
+
+#    - description: "Assign an idempotent ID to the event."
+#      class: c3.ingest.extra.transforms.event.id.ShortHashIdFromFields
+#      config:
+#        fields: ["parsers.file.name", "parsers.file.size", "parsers.record.number"]
+#    - description: "Clear out the file info values and record number."
+#      class: c3.ingest.transforms.event.field.RemoveAll
+#      config:
+#        fields: ["parsers.file.size", "parsers.record.number", "parsers.file.name"]
+#    - description: "add a timestamp to the event"
+#      class: c3.ingest.transforms.event.time.TimeFromField
+#      config:
+#        field: "//time//receipt"
+#    - description: "Convert timestamp to an Instant datatype"
+#      class: c3.ingest.transforms.event.field.ConvertValue
+#      config:
+#        "//time//receipt":
+#          - instant: millis
