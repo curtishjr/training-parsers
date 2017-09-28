@@ -5,7 +5,7 @@
     "properties": [
       {
         "name": "c3.catalog.description",
-        "value": "ADS-B event logs"
+        "value": "Virtual Machine Pool login events."
       }
     ],
     "fields": [
