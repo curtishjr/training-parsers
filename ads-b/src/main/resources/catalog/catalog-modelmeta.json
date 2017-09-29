@@ -45,6 +45,66 @@
             "value": "One of the most important fields. This is the six-digit hexadecimal identifier broadcast by the aircraft over the air in order to identify itself.  Blocks of these codes are assigned to countries by the International Civil Aviation Organization (ICAO).  Each country then assigns individual codes to aircraft registered in that country. There should generally be a one to one correlation between an aircraft registration number and ICAO hex code.  The ICAO hex identifier can be used to lookup information such as aircraft registration, type, owner/operator, etc in various databases around the internet such as www.airframes.org.  It should be noted that generally the ICAO hex code remains the same as long as the aircraft’s “Registration number” remains the same.  If the registration number changes, which can happen sometimes when an aircraft is sold to an owner in another country, the ICAO hex code will also change."
           }
         ]
+      },{
+        "name": "LATITUDE",
+        "properties": [
+          {
+            "name": "c3.catalog.sourceName",
+            "value": "Lat"
+          },
+          {
+            "name": "c3.catalog.description",
+            "value": "Latitude of the aircraft position at a given moment in decimal."
+          }
+        ]
+      },{
+        "name": "LONGITUDE",
+        "properties": [
+          {
+            "name": "c3.catalog.sourceName",
+            "value": "Lng"
+          },
+          {
+            "name": "c3.catalog.description",
+            "value": "Longitude of the aircraft position at a given moment in decimal."
+          }
+        ]
+      },{
+        "name": "ADSB_ALT",
+        "properties": [
+          {
+            "name": "c3.catalog.sourceName",
+            "value": "Alt"
+          },
+          {
+            "name": "c3.catalog.description",
+            "value": "Altitude in feet of the aircraft position at a given moment in decimal."
+          }
+        ]
+      },{
+        "name": "ADSB_SPEED",
+        "properties": [
+          {
+            "name": "c3.catalog.sourceName",
+            "value": "Spd"
+          },
+          {
+            "name": "c3.catalog.description",
+            "value": "Speed of the aircraft at a given moment in decimal."
+          }
+        ]
+      },{
+        "name": "COUNTRY",
+        "properties": [
+          {
+            "name": "c3.catalog.sourceName",
+            "value": "Cou"
+          },
+          {
+            "name": "c3.catalog.description",
+            "value": "Country of origin for the aircraft."
+          }
+        ]
       }
     ]
   }

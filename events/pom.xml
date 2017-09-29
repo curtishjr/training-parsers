@@ -13,11 +13,11 @@
     <artifactId>events</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>Events Log Parser</name>
-    <description>Parser for ADS-B Logs.</description>
+    <name>VM Login Events Parser</name>
+    <description>Parser for Virtual Machine pool login events.</description>
 
     <properties>
-        <rda.app.key>adsb.json.parser</rda.app.key>
+        <rda.app.key>vm.login.events.parser</rda.app.key>
     </properties>
 
     <dependencies>

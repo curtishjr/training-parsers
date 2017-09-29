@@ -11,7 +11,11 @@ ads-b:
         "/acList/Call": "//adsb//callsign"
         "/acList/FSeen": "//time//receipt"
         "/acList/Icao": "//adsb//icao"
-#        "/acList/Cos": "//adsb//cos"
+        "/acList/Alt": "//adsb//alt"
+        "/acList/Lat": "//latitude"
+        "/acList/Long": "//longitude"
+        "/acList/Spd": "//adsb//speed"
+        "/acList/Cou": "//country"
       ingest-info:
         file-name: "parsers.file.name"
         file-size: "parsers.file.size"
@@ -44,3 +48,7 @@ ads-b:
       config:
         "//time//receipt":
           - instant: millis
+        "//adsb//alt": "integer"
+        "//adsb//speed": "double"
+        "//longitude": "double"
+        "//latitude": "double"

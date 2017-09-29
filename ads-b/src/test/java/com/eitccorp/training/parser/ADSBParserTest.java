@@ -31,55 +31,24 @@ public class ADSBParserTest {
                 .withField("//time//receipt", Instant.ofEpochMilli(1465430397644L), VIS)
                 .withField("//adsb//callsign", "SER621", VIS)
                 .withField("//adsb//icao", "C1E4DB", VIS)
+                .withField("//country", "Canada", VIS)
                 .build();
 
         Event expectedEvent2 = EventBuilder.create("ADS-B")
-                .withId("dbaedb27")
-                .withTimestamp(1465430397628L)
-                .withField("//time//receipt", Instant.ofEpochMilli(1465430397628L), VIS)
-                .withField("//adsb//icao", "ADDF5C", VIS)
-                .build();
-
-        Event expectedEvent3 = EventBuilder.create("ADS-B")
                 .withId("dbaedb27")
                 .withTimestamp(1465430380128L)
                 .withField("//time//receipt", Instant.ofEpochMilli(1465430380128L), VIS)
                 .withField("//adsb//callsign", "RXA2356", VIS)
                 .withField("//adsb//icao", "7C80F8", VIS)
-//                .withField("//adsb//cos", "a,b,c,d", VIS)
+                .withField("//country", "Australia", VIS)
+                .withField("//latitude", -32.272475999999997, VIS)
+                .withField("//longitude", 116.570874, VIS)
+                .withField("//adsb//alt", 12000, VIS)
+                .withField("//adsb//speed", 256.19999999999999, VIS)
                 .build();
 
         Assert.assertEquals(3, events.size());
         EventAssert.assertEquals(expectedEvent, events.get(0));
-        EventAssert.assertEquals(expectedEvent2, events.get(1));
-        EventAssert.assertEquals(expectedEvent3, events.get(2));
+        EventAssert.assertEquals(expectedEvent2, events.get(2));
     }
 }
-
-//"AltT": 0,
-//        "Bad": false,
-//        "CMsgs": 2,
-//        "Call": "SER621",
-//        "CallSus": false,
-//        "Cou": "Canada",
-//        "EngMount": 0,
-//        "EngType": 0,
-//        "FSeen": "/Date(1465430397644)/",
-//        "FlightsCount": 0,
-//        "HasPic": false,
-//        "HasSig": false,
-//        "Icao": "C1E4DB",
-//        "Id": 12707035,
-//        "Interested": false,
-//        "Mil": false,
-//        "Rcvr": 1,
-//        "SpdTyp": 0,
-//        "Species": 0,
-//        "Sqk": "",
-//        "TSecs": 3,
-//        "TT": "a",
-//        "Tisb": false,
-//        "TrkH": false,
-//        "Trt": 1,
-//        "VsiT": 0,
-//        "WTC": 0
