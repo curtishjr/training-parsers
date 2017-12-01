@@ -3,7 +3,7 @@ vm-login-events:
   output: streaming
   parser:
     description: "A CSV parser VM login data."
-    class: c3.ingest.parsers.csv.IndexableCSVParser
+    class: bdp.ingest.parsers.csv.IndexableCSVParser
     vis: "U"
     config:
       delimiter-char: "," # optional
@@ -18,15 +18,15 @@ vm-login-events:
         5: "//virtualsystem"
   transforms:
     - description: "Set the kronos event type"
-      class: c3.ingest.transforms.event.type.SetType
+      class: bdp.ingest.transforms.event.type.SetType
       config:
         value: "VM-LOGIN-EVENTS"
     - description: "add Kronos timestamp from datetime field"
-      class: c3.ingest.transforms.event.time.FormattedTime
+      class: bdp.ingest.transforms.event.time.FormattedTime
       config:
         "//datetime": "MM/dd/yyyy hh:mm aa"
     - description: "Convert IP SRC and time of request field types"
-      class: c3.ingest.transforms.event.field.ConvertValue
+      class: bdp.ingest.transforms.event.field.ConvertValue
       config:
         "//datetime":
           - instant: "MM/dd/yyyy hh:mm aa"

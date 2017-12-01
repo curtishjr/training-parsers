@@ -3,7 +3,7 @@ ads-b:
   output: streaming
   parser:
     description: "A JSON parser configured for ADS-B log data."
-    class: c3.ingest.parsers.json.JsonParser
+    class: bdp.ingest.parsers.json.JsonParser
     vis: "U"
     config:
       group-by: "/acList"
@@ -22,29 +22,29 @@ ads-b:
         record-number: "parsers.record.number"
   transforms:
     - description: "Set the kronos event type"
-      class: c3.ingest.transforms.event.type.SetType
+      class: bdp.ingest.transforms.event.type.SetType
       config:
         value: "ADS-B"
     - description: "Assign an idempotent ID to the event."
-      class: c3.ingest.extra.transforms.event.id.ShortHashIdFromFields
+      class: bdp.ingest.transforms.event.id.HashIdFromFields
       config:
         fields: ["parsers.file.name", "parsers.file.size", "parsers.record.number"]
     - description: "Clear out the file info values and record number."
-      class: c3.ingest.transforms.event.field.RemoveAll
+      class: bdp.ingest.transforms.event.field.RemoveAll
       config:
         fields: ["parsers.file.size", "parsers.record.number", "parsers.file.name"]
     - description: "Remove leading square brace from a time of request."
-      class: c3.ingest.extra.transforms.event.field.ReplaceSubstring
+      class: bdp.ingest.extra.transforms.event.field.ReplaceSubstring
       config:
         "//time//receipt":
           "/Date\\(": ""
           "\\)/": ""
     - description: "add a timestamp to the event"
-      class: c3.ingest.transforms.event.time.TimeFromField
+      class: bdp.ingest.transforms.event.time.TimeFromField
       config:
         field: "//time//receipt"
     - description: "Convert timestamp to an Instant datatype"
-      class: c3.ingest.transforms.event.field.ConvertValue
+      class: bdp.ingest.transforms.event.field.ConvertValue
       config:
         "//time//receipt":
           - instant: millis

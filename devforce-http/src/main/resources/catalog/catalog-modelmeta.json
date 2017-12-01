@@ -4,7 +4,7 @@
     "type": "DEVFORCE-HTTP",
     "properties": [
       {
-        "name": "c3.catalog.description",
+        "name": "bdp.catalog.description",
         "value": "Devforce HTTP Logs"
       }
     ],
@@ -13,11 +13,11 @@
         "name": "TIME_RECEIPT",
         "properties": [
           {
-            "name": "c3.catalog.sourceName",
+            "name": "bdp.catalog.sourceName",
             "value": "Server Request Time"
           },
           {
-            "name": "c3.catalog.description",
+            "name": "bdp.catalog.description",
             "value": "The time when the request is received by th web server"
           }
         ]
@@ -25,11 +25,11 @@
         "name": "IP_SRC",
         "properties": [
           {
-            "name": "c3.catalog.sourceName",
+            "name": "bdp.catalog.sourceName",
             "value": "Source Address"
           },
           {
-            "name": "c3.catalog.description",
+            "name": "bdp.catalog.description",
             "value": "The IP address of the HTTP client that initiated the request."
           }
         ]
@@ -37,11 +37,11 @@
         "name": "URL_REQUEST",
         "properties": [
           {
-            "name": "c3.catalog.sourceName",
+            "name": "bdp.catalog.sourceName",
             "value": "URL"
           },
           {
-            "name": "c3.catalog.description",
+            "name": "bdp.catalog.description",
             "value": "The first line of the HTTP request from the client."
           }
         ]
@@ -49,11 +49,11 @@
         "name": "HTTPMETHODNAME",
         "properties": [
           {
-            "name": "c3.catalog.sourceName",
+            "name": "bdp.catalog.sourceName",
             "value": "HTTP Method"
           },
           {
-            "name": "c3.catalog.description",
+            "name": "bdp.catalog.description",
             "value": "HTTP method of the request"
           }
         ]
@@ -61,11 +61,11 @@
         "name": "URL_RESOURCE",
         "properties": [
           {
-            "name": "c3.catalog.sourceName",
+            "name": "bdp.catalog.sourceName",
             "value": "URL"
           },
           {
-            "name": "c3.catalog.description",
+            "name": "bdp.catalog.description",
             "value": "The resource the client requested"
           }
         ]
@@ -73,11 +73,11 @@
         "name": "PROTOCOL_TRANSPORT",
         "properties": [
           {
-            "name": "c3.catalog.sourceName",
+            "name": "bdp.catalog.sourceName",
             "value": "Protocol"
           },
           {
-            "name": "c3.catalog.description",
+            "name": "bdp.catalog.description",
             "value": "Transport protocol for the inbound request."
           }
         ]
@@ -85,11 +85,11 @@
         "name": "HTTPRESPONSESTATUSCODE",
         "properties": [
           {
-            "name": "c3.catalog.sourceName",
+            "name": "bdp.catalog.sourceName",
             "value": "Status code."
           },
           {
-            "name": "c3.catalog.description",
+            "name": "bdp.catalog.description",
             "value": "The HTTP response status code sent to the client. Full reference: https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"
           }
         ]
@@ -97,11 +97,11 @@
         "name": "BYTES_OUTPUT",
         "properties": [
           {
-            "name": "c3.catalog.sourceName",
+            "name": "bdp.catalog.sourceName",
             "value": "Bytes Out"
           },
           {
-            "name": "c3.catalog.description",
+            "name": "bdp.catalog.description",
             "value": "The size of the response sent to the client."
           }
         ]
@@ -109,11 +109,11 @@
         "name": "URL_REFERRER",
         "properties": [
           {
-            "name": "c3.catalog.sourceName",
+            "name": "bdp.catalog.sourceName",
             "value": "Referrer"
           },
           {
-            "name": "c3.catalog.description",
+            "name": "bdp.catalog.description",
             "value": "The HTTP referring source"
           }
         ]
@@ -121,11 +121,11 @@
         "name": "HTTPUSERAGENT",
         "properties": [
           {
-            "name": "c3.catalog.sourceName",
+            "name": "bdp.catalog.sourceName",
             "value": "User agent"
           },
           {
-            "name": "c3.catalog.description",
+            "name": "bdp.catalog.description",
             "value": "The user agent string provided by the HTTP client"
           }
         ]

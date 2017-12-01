@@ -1,10 +1,10 @@
 package com.eitccorp.training.parser.http;
 
-import c3.ingest.test.EventAssert;
-import c3.ingest.test.TestUtils;
+import bdp.ingest.test.EventAssert;
+import bdp.ingest.test.TestUtils;
 import kronos.core.Event;
 import kronos.core.EventBuilder;
-import org.calrissian.mango.domain.ip.IPv4;
+import org.calrissian.mango.net.IPv4;
 import org.junit.Test;
 
 import java.time.Instant;

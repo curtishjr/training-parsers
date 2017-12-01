@@ -1,7 +1,7 @@
 package com.eitccorp.training.parser;
 
-import c3.ingest.test.EventAssert;
-import c3.ingest.test.TestUtils;
+import bdp.ingest.test.EventAssert;
+import bdp.ingest.test.TestUtils;
 import kronos.core.Event;
 import kronos.core.EventBuilder;
 import org.junit.Assert;

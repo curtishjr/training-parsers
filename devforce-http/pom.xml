@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -23,19 +21,19 @@
 
     <dependencies>
         <dependency>
-            <groupId>c3.ingest</groupId>
+            <groupId>bdp.ingest</groupId>
             <artifactId>ingest-parsers</artifactId>
         </dependency>
         <dependency>
-            <groupId>c3.ingest</groupId>
-            <artifactId>ingest-transforms</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>c3.ingest</groupId>
+            <groupId>bdp.ingest</groupId>
             <artifactId>ingest-test</artifactId>
         </dependency>
         <dependency>
-            <groupId>c3.ingest-extra</groupId>
+            <groupId>bdp.ingest</groupId>
+            <artifactId>ingest-transforms</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>bdp.ingest-extra</groupId>
             <artifactId>extra-transforms</artifactId>
         </dependency>
         <dependency>
