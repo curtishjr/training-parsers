@@ -1,0 +1,30 @@
+[
+  {
+    "name": "//mailfrom//smtpheader",
+    "description": "Email sender"
+  },
+  {
+    "name": "//to//smtpheader",
+    "description": "Email recipient"
+  },
+  {
+    "name": "//datetime//smtpheader",
+    "description": "The date sent"
+  },
+  {
+    "name": "//importance//smtpheader",
+    "description": "Importance"
+  },
+  {
+    "name": "//subject//smtpheader",
+    "description": "Email subject"
+  },
+  {
+    "name": "//message//smtp",
+    "description": "Email body"
+  },
+  {
+    "name": "//orderedlist//fileids//attachments//smtp",
+    "description": "Email attachments"
+  }
+]

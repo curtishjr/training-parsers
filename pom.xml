@@ -17,6 +17,7 @@
         <module>devforce-http</module>
         <module>ads-b</module>
         <module>events</module>
+        <module>email</module>
     </modules>
 
     <properties>

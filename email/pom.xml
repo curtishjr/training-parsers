@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.eitccorp.training</groupId>
+        <artifactId>parsers-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>email</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>Plain-text Email Parser</name>
+    <description>Parser for email messages grouped by topic into plaintext files.</description>
+
+    <properties>
+        <rda.app.key>sofwerx.srse.bdp.email.parser</rda.app.key>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>bdp.ingest</groupId>
+            <artifactId>ingest-parsers</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>bdp.ingest</groupId>
+            <artifactId>ingest-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>bdp.ingest</groupId>
+            <artifactId>ingest-transforms</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>bdp.ingest-extra</groupId>
+            <artifactId>extra-transforms</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>dist</id>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>rda</id>
+            <activation>
+                <file>
+                    <exists>../src/main/assembly/rda-assembly.xml</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>rda</id>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-src-configs</id>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
