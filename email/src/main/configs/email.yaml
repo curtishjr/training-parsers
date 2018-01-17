@@ -11,13 +11,14 @@ email:
       config:
         value: "EMAIL"
     - description: "add Kronos timestamp from datetime field"
-      class: bdp.ingest.transforms.event.time.FormattedTime
+      class: bdp.ingest.transforms.event.time.AdvancedTime
       config:
-        "//datetime//smtpheader": "E, MMM d, Y h:m aa"
+        formats:
+          - "//datetime//smtpheader": "E, MMM d, Y h:m aa"
+          - "//datetime": "MM/dd/YYYY hh:mm:ss aa"
 #    - description: "Convert IP SRC and time of request field types"
 #      class: bdp.ingest.transforms.event.field.ConvertValue
 #      config:
 #        "//datetime":
 #          - instant: "MM/dd/yyyy hh:mm aa"
 #
-#          Sunday, December 31, 2006 10:14 PM

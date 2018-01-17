@@ -19,6 +19,8 @@ public class EmailParser extends IngestInfoParser<Record> {
     public static final String FROM = "From:";
     public static final String SENT = "Sent:";
     public static final String SUBJECT = "Subject:";
+    public static final String DATE = "Date:";
+    public static final String TO = "To:";
 
     @Override
     public CloseableIterator<Record> parseRaw(InputStream inputStream, FileInfo fileInfo) {
@@ -35,7 +37,7 @@ public class EmailParser extends IngestInfoParser<Record> {
                     while((line = reader.readLine()) != null){
                         if(line.startsWith(FROM)) {
                             if(!isFirstRecord){
-                                record.getData().put("//message//smtp", body.toString());
+                                record.getData().put("//message//smtp", body.toString().trim());
                                 reader.reset();
                                 return record;
                             }
@@ -43,17 +45,24 @@ public class EmailParser extends IngestInfoParser<Record> {
                             isFirstRecord = false;
 
                             record = new Record();
-                            record.getData().put("//mailfrom//smtpheader", line.replaceFirst(FROM, "").trim());
+                            record.getData().put("//from//smtpheader", line.replaceFirst(FROM, "").trim());
                             body = new StringBuilder();
+                        }
+                        else if(line.startsWith(TO)){
+                            record.getData().put("//to//smtpheader", line.replaceFirst(TO, "").trim());
                         }
                         else if(line.startsWith(SENT)){
                             record.getData().put("//datetime//smtpheader", line.replaceFirst(SENT, "").trim());
+                        }
+                        else if(line.startsWith(DATE)){
+                            record.getData().put("//datetime", line.replaceFirst(DATE, "").trim());
                         }
                         else if(line.startsWith(SUBJECT)){
                             record.getData().put("//subject//smtpheader", line.replaceFirst(SUBJECT, "").trim());
                         }
                         else{
                             body.append(line);
+                            body.append("\n");
                             reader.mark(300);
                         }
                     }

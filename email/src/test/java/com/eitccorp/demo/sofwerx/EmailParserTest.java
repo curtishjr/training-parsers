@@ -26,9 +26,10 @@ public class EmailParserTest {
 
         Event expectedEvent = EventBuilder.create("EMAIL")
                 .withId("dbaedb27")
-                .withTimestamp(1501152060000L)
+                .withTimestamp(1167603240000L)
                 .withField("//from//smtpheader", "Patricia Cromartie <animejunkiekasumi123@msn.com>", VIS)
                 .withField("//datetime//smtpheader", "Sunday, December 31, 2006 10:14 PM", VIS)
+                .withField("//to//smtpheader", "Governor Jeb Bush", VIS)
                 .withField("//message//smtp", "as a correction officer I believe that at times people forget how imporant \n" +
                         "one person privacey is what we may saw to some one in passing we tend to \n" +
                         "forget how fast the inmate grape vine is and what inmates can do with bits \n" +
@@ -41,7 +42,7 @@ public class EmailParserTest {
                         "http://clk.atdmt.com/MSN/go/msnnkwme0080000001msn/direct/01/?href=http://imagine-windowslive.com/minisites/santabot/default.aspx?locale=en-us", VIS)
                 .build();
 
-        Assert.assertEquals(1821, events.size());
+        Assert.assertEquals(8, events.size());
         EventAssert.assertEquals(expectedEvent, events.get(0));
     }
 }

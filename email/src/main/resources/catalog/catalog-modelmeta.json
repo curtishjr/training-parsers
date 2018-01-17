@@ -10,7 +10,7 @@
     ],
     "fields": [
       {
-        "name": "MAILFROM_SMTPHEADER",
+        "name": "FROM_SMTPHEADER",
         "properties": [
           {
             "name": "bdp.catalog.sourceName",

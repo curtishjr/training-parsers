@@ -1,6 +1,6 @@
 [
   {
-    "name": "//mailfrom//smtpheader",
+    "name": "//from//smtpheader",
     "description": "Email sender"
   },
   {
