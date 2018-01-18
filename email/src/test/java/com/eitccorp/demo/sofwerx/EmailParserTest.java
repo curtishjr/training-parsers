@@ -30,6 +30,7 @@ public class EmailParserTest {
                 .withField("//from//smtpheader", "Patricia Cromartie <animejunkiekasumi123@msn.com>", VIS)
                 .withField("//datetime//smtpheader", "Sunday, December 31, 2006 10:14 PM", VIS)
                 .withField("//to//smtpheader", "Governor Jeb Bush", VIS)
+                .withField("//orderedlist//fileids//attachments//smtp", "mp4/state_of_the_nation", VIS)
                 .withField("//message//smtp", "as a correction officer I believe that at times people forget how imporant \n" +
                         "one person privacey is what we may saw to some one in passing we tend to \n" +
                         "forget how fast the inmate grape vine is and what inmates can do with bits \n" +

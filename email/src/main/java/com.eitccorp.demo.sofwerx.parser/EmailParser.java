@@ -38,6 +38,7 @@ public class EmailParser extends IngestInfoParser<Record> {
                         if(line.startsWith(FROM)) {
                             if(!isFirstRecord){
                                 record.getData().put("//message//smtp", body.toString().trim());
+                                record.getData().put("//orderedlist//fileids//attachments//smtp", "mp4/state_of_the_nation");
                                 reader.reset();
                                 return record;
                             }
