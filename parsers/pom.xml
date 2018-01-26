@@ -70,45 +70,6 @@
                                 <tarLongFileMode>gnu</tarLongFileMode>
                             </configuration>
                         </execution>
-                        <execution>
-                            <id>dist</id>
-                            <goals>
-                                <goal>single</goal>
-                            </goals>
-                            <phase>package</phase>
-                            <configuration>
-                                <descriptors>
-                                    <descriptor>${project.basedir}/../src/main/assembly/dist-assembly.xml</descriptor>
-                                </descriptors>
-                                <tarLongFileMode>gnu</tarLongFileMode>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <executions>
-                        <execution>
-                            <id>unpack-ingest-extra-resources</id>
-                            <goals>
-                                <goal>unpack</goal>
-                            </goals>
-                            <phase>none</phase>
-                            <configuration>
-                                <artifactItems>
-                                    <artifactItem>
-                                        <groupId>bdp.ingest-extra</groupId>
-                                        <artifactId>extra-config</artifactId>
-                                        <version>${ingest-extra.version}</version>
-                                        <classifier>dist</classifier>
-                                        <type>tar.gz</type>
-                                    </artifactItem>
-                                </artifactItems>
-                                <outputDirectory>${project.build.directory}/parser-configs</outputDirectory>
-                                <overWriteSnapshots>true</overWriteSnapshots>
-                            </configuration>
-                        </execution>
                     </executions>
                 </plugin>
                 <plugin>
