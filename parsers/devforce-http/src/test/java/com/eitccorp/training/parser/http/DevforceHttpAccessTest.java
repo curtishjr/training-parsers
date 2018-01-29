@@ -27,7 +27,6 @@ public class DevforceHttpAccessTest {
         List<Event> events  = newArrayList(TestUtils.parseKronosFile(FEED_CONFIG_DIR, DATA_TYPE, HTTP_LOG));
 
         Event expectedEvent = EventBuilder.create("DEVFORCE-HTTP")
-                .withId("dbaedb27")
                 .withTimestamp(1505622705000L)
                 .withField("//time//receipt", Instant.ofEpochMilli(1505622705000L), VIS)
                 .withField("//ip//src", IPv4.fromString("63.143.42.248"), VIS)
@@ -42,7 +41,6 @@ public class DevforceHttpAccessTest {
                 .build();
 
         Event expectedEvent2 = EventBuilder.create("DEVFORCE-HTTP")
-                .withId("dbaedb27")
                 .withTimestamp(1505627670000L)
                 .withField("//time//receipt", Instant.ofEpochMilli(1505627670000L), VIS)
                 .withField("//ip//src", IPv4.fromString("46.118.154.197"), VIS)
@@ -57,7 +55,6 @@ public class DevforceHttpAccessTest {
                 .build();
 
   Event expectedEvent5 = EventBuilder.create("DEVFORCE-HTTP")
-                .withId("dbaedb27")
                 .withTimestamp(1503421121000L)
                 .withField("//time//receipt", Instant.ofEpochMilli(1503421121000L), VIS)
                 .withField("//ip//src", IPv4.fromString("164.52.7.132"), VIS)
