@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.eitccorp.training</groupId>
+    <artifactId>gem</artifactId>
+    <version>1.0.0</version>
+
+    <parent>
+        <groupId>bdp</groupId>
+        <artifactId>bdp-parent</artifactId>
+        <version>15</version>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>gem</groupId>
+            <artifactId>gem-api</artifactId>
+            <version>1.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>gem</groupId>
+            <artifactId>gem-rya-store</artifactId>
+            <version>1.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>gem</groupId>
+            <artifactId>gem-index</artifactId>
+            <version>1.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>bdp.ingest</groupId>
+            <artifactId>ingest-test</artifactId>
+            <version>3.2.4</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-hdfs</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>bdp.ingest</groupId>
+            <artifactId>ingest-transforms</artifactId>
+            <version>3.2.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>bdp.ingest-extra</groupId>
+            <artifactId>extra-transforms</artifactId>
+            <version>1.3.0-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
+

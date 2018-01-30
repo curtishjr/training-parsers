@@ -1,0 +1,111 @@
+port-enrichment:
+  description: "IANA Services names for port numbers."
+  parser:
+    description: "Extracts the services names"
+    class: bdp.ingest.parsers.csv.CSVParser
+    vis: "U"
+  transforms:
+#    - description: "camelCase all of the attribute names"
+#      class: uscc.enrichment.transforms.CamelCaseAttributeNames
+    - description: "Removes bad entries that are not complete"
+      class:  bdp.ingest.extra.transforms.entity.field.EnsureFieldsDefined
+      config:
+        fields:
+          - "Port Number"
+          - "Transport Protocol"
+    - description: "use port_num id as the entity id"
+      class: bdp.ingest.transforms.entity.id.IdFromFields
+      config:
+        fields: "Port Number"
+#    - description: "default the created dates to jan-01-1970 and serviceName to Unregistered"
+#      class: uscc.enrichment.transforms.DefaultEmptyValue
+#      config:
+#        registrationDate: "1/1/1970"
+#        serviceName: "Unregistered"
+    - description: "remove nulls"
+      class: bdp.ingest.transforms.entity.field.IgnoreValues
+      config:
+        "values":
+          - ""
+    - description: "Convert Dates to proper type"
+      class: bdp.ingest.transforms.entity.field.ConvertValue
+      config:
+        "registrationDate":
+          - date: 'MM/dd/yyyy'
+          - date: "yyyy-MM-dd"
+          - date: 'MM/dd/yy'
+          - date: 'yyyy-MM'
+          - string
+        "modificationDate":
+          - date: 'MM/dd/yyyy'
+          - date: "yyyy-MM-dd"
+          - date: 'MM/dd/yy'
+          - date: 'yyyy-MM'
+          - string
+#    - description: "calculates the lastUpdated as earliest of createdDate and updateDate"
+#      class: uscc.enrichment.transforms.MostRecentDate
+#      config:
+#        destinationFieldValue: "transportProtocol"
+#        sources:
+#          - "registrationDate"
+#          - "modificationDate"
+    - description: "hash the last Update ID to allow for proper overwriting"
+      class: bdp.ingest.transforms.entity.field.GenerateId
+      config:
+        "tcp": HASH
+        "udp": HASH
+        "sctp": HASH
+        "dccp": HASH
+#    - description: "push to metadata"
+#      class: uscc.enrichment.transforms.PushAttributesToMetadata
+#      config:
+#        destinationFieldValue: "transportProtocol"
+#        sources:
+#          - "serviceName"
+#          - "portNumber"
+#          - "transportProtocol"
+#          - "description"
+#          - "assignee"
+#          - "contact"
+#          - "registrationDate"
+#          - "modificationDate"
+#          - "reference"
+#          - "serviceCode"
+#          - "knownUnauthorizedUses"
+#          - "assignmentNotes"
+#    - description: "pull out metadata elements to support additional queries"
+#      class: uscc.enrichment.transforms.CreateRelatedEntity
+#      config:
+#        targetType: "port-enrichment"
+#        attributeName : "tcp"
+#        relationshipName: "runsOnPort"
+#        elementsToRelatedType:
+#          serviceName : "port_service"
+#    - description: "pull out metadata elements to support additional queries"
+#      class: uscc.enrichment.transforms.CreateRelatedEntity
+#      config:
+#        targetType: "port-enrichment"
+#        attributeName : "udp"
+#        relationshipName: "runsOnPort"
+#        elementsToRelatedType:
+#          serviceName : "port_service"
+#    - description: "pull out metadata elements to support additional queries"
+#      class: uscc.enrichment.transforms.CreateRelatedEntity
+#      config:
+#        targetType: "port-enrichment"
+#        attributeName : "sctp"
+#        relationshipName: "runsOnPort"
+#        elementsToRelatedType:
+#          serviceName : "port_service"
+#    - description: "pull out metadata elements to support additional queries"
+#      class: uscc.enrichment.transforms.CreateRelatedEntity
+#      config:
+#        targetType: "port-enrichment"
+#        attributeName : "dccp"
+#        relationshipName: "runsOnPort"
+#        elementsToRelatedType:
+#          serviceName : "port_service"
+    - description: "sets the IDs for the new created relationships to remove duplicates"
+      class: bdp.ingest.transforms.entity.field.GenerateId
+      config:
+        "runsOnPort": HASH
