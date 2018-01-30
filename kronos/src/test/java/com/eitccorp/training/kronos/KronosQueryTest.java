@@ -24,7 +24,7 @@ public class KronosQueryTest {
     static Connector connector;
 
     /*
-    This method generates a set of 10 events in Kronos with the following attribute values.
+    This method generates a set of 10 SILK events in Kronos with the following attribute values.
     +----------+-----------+----------+----------+------+-------+------------------------------+
     | IP_SRC   | IP_DST    | PORT_SRC | PORT_DST | s1   | s2    | timestamp                    |
     +----------+-----------+----------+----------+------+-------+------------------------------+
@@ -63,7 +63,7 @@ public class KronosQueryTest {
 
         KronosQuery query = new KronosQuery();
 
-        List<Event> events = from(queryService.query(query.dateRangeQuery(), query.getAuths()))
+        List<Event> events = from(queryService.query(query.queryByDateRange(), query.getAuths()))
                 .autoClose()
                 .toList();
 
@@ -71,6 +71,65 @@ public class KronosQueryTest {
         events.get(1).getFields("IP_SRC").forEach((field) -> Assert.assertEquals("10.1.1.5", field.getValue()));
         Assert.assertEquals(2, events.size());
     }
+
+    @Test
+    public void testQueryByAttributeValue() throws Exception{
+        QueryService queryService = getQueryService(connector);
+
+        KronosQuery query = new KronosQuery();
+
+        List<Event> events = from(queryService.query(query.queryByAttributeValue(), query.getAuths()))
+                .autoClose()
+                .toList();
+
+        events.get(0).getFields("s1").forEach((field) -> Assert.assertEquals("val6", field.getValue()));
+        events.get(1).getFields("s1").forEach((field) -> Assert.assertEquals("val8", field.getValue()));
+        Assert.assertEquals(2, events.size());
+    }
+
+    @Test
+    public void testQueryWithLimitedFieldReturn() throws Exception{
+        QueryService queryService = getQueryService(connector);
+
+        KronosQuery query = new KronosQuery();
+
+        List<Event> events = from(queryService.query(query.queryWithLimitedReturnFields(), query.getAuths()))
+                .autoClose()
+                .toList();
+
+        Assert.assertEquals(10, events.size());
+        events.get(0).getFields("IP_SRC").forEach((field) -> Assert.assertEquals("10.1.1.0", field.getValue()));
+        Assert.assertEquals(0, events.get(0).getFields("IP_DST").size());
+    }
+
+    @Test
+    public void testQueryWithLimitedTypes() throws Exception{
+        QueryService queryService = getQueryService(connector);
+
+        KronosQuery queryClient = new KronosQuery();
+
+        List<Event> events = from(queryService.query(queryClient.queryWithLimitedTypes(), queryClient.getAuths()))
+                .autoClose()
+                .toList();
+
+        Assert.assertEquals(0, events.size());
+    }
+
+    @Test
+    public void testQueryByID() throws Exception{
+        QueryService queryService = getQueryService(connector);
+
+        KronosQuery query = new KronosQuery();
+
+        List<Event> events = from(queryService.query(query.queryByID(), query.getAuths()))
+                .autoClose()
+                .toList();
+
+        Assert.assertEquals(1, events.size());
+        events.get(0).getFields("IP_SRC").forEach((field) -> Assert.assertEquals("10.1.1.2", field.getValue()));
+    }
+
+
 
     private static Connector mockConnector() throws Exception{
         return new MockInstance().getConnector("root", new PasswordToken(""));
