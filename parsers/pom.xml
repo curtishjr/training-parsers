@@ -20,7 +20,7 @@
 
     <properties>
         <bdp.version>3.0.1</bdp.version>
-        <ingest-extra.version>1.3.0-SNAPSHOT</ingest-extra.version>
+        <ingest-extra.version>1.3.0</ingest-extra.version>
     </properties>
 
     <dependencyManagement>
@@ -101,7 +101,7 @@
     <repositories>
         <repository>
             <id>parsers</id>
-            <url>https://nexus.devforce.io/content/groups/parsers-public/</url>
+            <url>https://nexus.devforce.disa.mil/content/groups/parsers-public/</url>
         </repository>
     </repositories>
 </project>
